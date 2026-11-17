@@ -23,7 +23,6 @@ public class AuthService {
     private final PasswordEncoder encoder;
     private final JwtService jwt;
 
-    /** true si se creó el usuario; false si no se pudo (correo o RUN ya registrados, etc.). */
     public boolean registrar(RegisterRequest req) {
         String correo = req.correo().trim().toLowerCase();
         String run = req.run().trim();
@@ -51,7 +50,6 @@ public class AuthService {
         }
     }
 
-    /** Devuelve el JWT si las credenciales son válidas; vacío en cualquier otro caso. */
     public Optional<String> login(LoginRequest req) {
         return usuarios.findByCorreo(req.correo().trim().toLowerCase())
                 .filter(u -> encoder.matches(req.password(), u.getPasswordHash()))
