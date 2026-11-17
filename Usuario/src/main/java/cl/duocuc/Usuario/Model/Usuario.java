@@ -41,18 +41,18 @@ public class Usuario {
     @Column(nullable = false, name = "fecha_nac")
     private LocalDate fechaNac;
 
-    // Es el identificador de inicio de sesión, por eso es único.
+    
     @Column(nullable = false, unique = true, length = 150)
     private String correo;
 
     @Column(nullable = false, length = 300)
     private String direccion;
 
-    // Nunca se guarda la contraseña en texto plano: solo el hash BCrypt.
+    
     @Column(name = "password_hash", nullable = false)
     private String passwordHash;
 
-    // El rol lo asigna siempre el servidor, nunca el cliente.
+    
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Rol rol;

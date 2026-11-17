@@ -8,7 +8,6 @@ import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
-// Sin campo "rol": si el cliente lo envía en el JSON, se ignora.
 public record RegisterRequest(
         @NotBlank @Size(max = 13) String run,
         @NotBlank @Size(max = 150) String nombre,
